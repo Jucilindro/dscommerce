@@ -1,13 +1,14 @@
 package com.devsuperior.dscommerce.entities;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tb_order_item")
-public class OrderItem {
+public class OrderItem implements Serializable {
+    private static final long serialVersionUUID=1L;
     @EmbeddedId
     private OrderItemPK id = new OrderItemPK();
     private Integer quantity;
