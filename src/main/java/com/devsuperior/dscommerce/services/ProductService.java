@@ -1,5 +1,4 @@
 package com.devsuperior.dscommerce.services;
-
 import com.devsuperior.dscommerce.dto.CategoryDTO;
 import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.dto.ProductMinDTO;

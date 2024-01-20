@@ -1,5 +1,4 @@
 package com.devsuperior.dscommerce.dto;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;

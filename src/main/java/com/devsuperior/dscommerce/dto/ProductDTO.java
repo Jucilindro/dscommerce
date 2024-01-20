@@ -1,8 +1,6 @@
 package com.devsuperior.dscommerce.dto;
-
 import com.devsuperior.dscommerce.entities.Category;
 import com.devsuperior.dscommerce.entities.Product;
-
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;

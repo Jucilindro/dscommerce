@@ -1,5 +1,4 @@
 package com.devsuperior.dscommerce.entities;
-
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
