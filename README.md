@@ -33,6 +33,11 @@ Usuários administradores têm acesso à área administrativa, onde podem gerenc
 ![modelo conceitual](https://github.com/user-attachments/assets/624cb75d-01b0-419b-af6c-ad2115aa34bd)
 
 
+<h2>Diagrama de Casos de Uso</h2>
+
+![casos de uso](https://github.com/user-attachments/assets/7ad1f56e-03b7-45cf-a108-896a564569b5)
+
+
 <h2>Tecnologias utlizadas</h2>
 
 - Java
