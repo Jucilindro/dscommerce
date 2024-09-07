@@ -88,11 +88,13 @@ Principais endpoints da API, e respostas esperadas.
 | Rotas               | descrição                                          
 |----------------------|-----------------------------------------------------
 | <kbd>GET /products</kbd>     | retorna uma página com 12 produtos.
-| <kbd>POST /products</kbd>     | Salva um novo produto passado no corpo da requisição
-| <kbd>PUT /products/1</kbd>     | Atualiza o produto com as atualizções passadas no corpo da requisição
-| <kbd>DELETE /products/1</kbd>     | Apaga o produto com id correspondente.
-| <kbd>POST /products</kbd>     | Salva um novo produto passado no corpo da requisição
-| <kbd>POST /products</kbd>     | Salva um novo produto passado no corpo da requisição
+| <kbd>GET /products/1</kbd>   | retorna uma página com 12 produtos.
+| <kbd>POST /products</kbd>    | Salva um novo produto passado no corpo da requisição
+| <kbd>PUT /products/1</kbd>   | Atualiza o produto com as atualizções passadas no corpo da requisição
+| <kbd>DELETE /products/1</kbd>| Apaga o produto com id correspondente.
+|                              |
+| <kbd>POST /orders/1</kbd>    | Salva um novo produto passado no corpo da requisição
+| <kbd>POST /orders</kbd>    | Salva um novo produto passado no corpo da requisição
 
 
 <h3 id="get-auth-detail">GET  /products</h3>
