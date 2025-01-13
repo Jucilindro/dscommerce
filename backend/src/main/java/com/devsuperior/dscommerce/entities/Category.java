@@ -1,5 +1,8 @@
 package com.devsuperior.dscommerce.entities;
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,8 +14,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
     @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
+
     public Category() {
     }
 
