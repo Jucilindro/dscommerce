@@ -1,7 +1,7 @@
 package com.devsuperior.dscommerce.entities;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -89,6 +89,10 @@ public class User implements UserDetails {
 
     public List<Order> getOrders() {
         return orders;
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
     }
 
     public Set<Role> getRoles() {

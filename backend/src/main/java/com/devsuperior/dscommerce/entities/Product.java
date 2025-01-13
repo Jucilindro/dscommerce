@@ -1,5 +1,5 @@
 package com.devsuperior.dscommerce.entities;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;

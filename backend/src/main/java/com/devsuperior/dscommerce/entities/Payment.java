@@ -1,5 +1,5 @@
 package com.devsuperior.dscommerce.entities;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.Instant;
 @Entity
 @Table(name = "tb_payment")
