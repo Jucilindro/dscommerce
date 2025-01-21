@@ -12,7 +12,7 @@ public class AuthService {
 
     public  void validateSelfOrAdmin(Long userId) {
         User me = userService.authenticated();
-        if (!me.hasRole("ROLE_ADMIN")) {
+        if (me.hasRole("ROLE_ADMIN")) {
             return;
         }
         if(!me.getId().equals(userId)) {
