@@ -128,7 +128,7 @@ public class OrderServiceTests {
         OrderDTO result = service.insert(orderDTO);
 
         Assertions.assertNotNull(result);
-        Assertions.assertEquals(orderDTO.getId(), result.getId());
+        Assertions.assertEquals(existingOrderId, result.getId());
     }
 
     @Test
@@ -139,8 +139,7 @@ public class OrderServiceTests {
         OrderDTO result = service.insert(orderDTO);
 
         Assertions.assertNotNull(result);
-        Assertions.assertEquals(orderDTO.getId(), result.getId());
+        Assertions.assertEquals(existingOrderId, result.getId());
     }
-
 
 }
