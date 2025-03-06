@@ -74,7 +74,7 @@ public class ProductControllerIT {
         result.andExpect(jsonPath("$.content[0].id").value(1L));
         result.andExpect(jsonPath("$.content[0].name").value("The Lord of the Rings"));
         result.andExpect(jsonPath("$.content[0].price").value(90.5));
-        result.andExpect(jsonPath("$.content[0].imgUrl").value( "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg"));
+        result.andExpect(jsonPath("$.content[0].imgUrl").value("https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg"));
     }
 
     @Test
@@ -88,7 +88,7 @@ public class ProductControllerIT {
         result.andExpect(jsonPath("$.content[0].id").value(3L));
         result.andExpect(jsonPath("$.content[0].name").value("Macbook Pro"));
         result.andExpect(jsonPath("$.content[0].price").value(1250.0));
-        result.andExpect(jsonPath("$.content[0].imgUrl").value( "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/3-big.jpg"));
+        result.andExpect(jsonPath("$.content[0].imgUrl").value("https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/3-big.jpg"));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class ProductControllerIT {
                         .content(jsonBody)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                        .andDo(MockMvcResultHandlers.print());
+                .andDo(MockMvcResultHandlers.print());
 
         result.andExpect(status().isCreated());
         result.andExpect(jsonPath("$.id").value(26L));
@@ -112,4 +112,95 @@ public class ProductControllerIT {
         result.andExpect(jsonPath("$.imgUrl").value("https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg"));
         result.andExpect(jsonPath("$.categories[0].id").value(2L));
     }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenAdminLoggedAndInvalidName() throws Exception {
+
+        product.setName("ab");
+        productDTO = new ProductDTO(product);
+
+        String jsonBody = objectMapper.writeValueAsString(productDTO);
+
+        ResultActions result = mockMvc
+                .perform(post("/products")
+                        .header("Authorization", "Bearer " + adminToken)
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenAdminLoggedAndInvalidDescription() throws Exception {
+
+        product.setDescription("ab");
+        productDTO = new ProductDTO(product);
+
+        String jsonBody = objectMapper.writeValueAsString(productDTO);
+
+        ResultActions result = mockMvc
+                .perform(post("/products")
+                        .header("Authorization", "Bearer " + adminToken)
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenAdminLoggedAndPriceIsNegative() throws Exception {
+
+        product.setPrice(-50.0);
+        productDTO = new ProductDTO(product);
+
+        String jsonBody = objectMapper.writeValueAsString(productDTO);
+
+        ResultActions result = mockMvc
+                .perform(post("/products")
+                        .header("Authorization", "Bearer " + adminToken)
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenAdminLoggedAndPriceIsZero() throws Exception {
+
+        product.setPrice(0.0);
+        productDTO = new ProductDTO(product);
+
+        String jsonBody = objectMapper.writeValueAsString(productDTO);
+
+        ResultActions result = mockMvc
+                .perform(post("/products")
+                        .header("Authorization", "Bearer " + adminToken)
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenAdminLoggedAndProductHasNotCategory() throws Exception {
+
+        product.getCategories().clear();
+        productDTO = new ProductDTO(product);
+
+        String jsonBody = objectMapper.writeValueAsString(productDTO);
+
+        ResultActions result = mockMvc
+                .perform(post("/products")
+                        .header("Authorization", "Bearer " + adminToken)
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
 }
