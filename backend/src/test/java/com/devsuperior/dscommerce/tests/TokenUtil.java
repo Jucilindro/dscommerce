@@ -16,11 +16,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Component
 public class TokenUtil {
 
-    @Value("${security.client-id}")
+    @Value("${security.oauth2.client.client-id}")
     private String clientId;
 
-    @Value("${security.client-secret}")
+    @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
+
 
     public String obtainAccessToken(MockMvc mockMvc, String username, String password) throws Exception {
 
